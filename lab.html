@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -80,7 +80,6 @@
                 $('#chosen').addClass('rating-chosen').prevAll().addClass('rating-chosen');
             });
             
-            // Is my use of id here problematic? (ID not unique?)
             $(document).on('click', '.rating-circle', function () {
                 $('#chosen').removeAttr('id');
                 $(this).attr('id', 'chosen');
@@ -88,7 +87,7 @@
             });
 
             $('#save-rating').click(function () {
-                var index = $('#rating-container').children().index($('#chosen'));
+                var index = $('#chosen').index();
                 // index = -1 if no rating is given (i.e., no element with the id "chosen")
                 var rating = { value: index + 1, maxValue: $('#rating-container').attr('max-value') };
                 $.post('http://jquery-edx.azurewebsites.net/api/Rating', rating).done(function (data) {
